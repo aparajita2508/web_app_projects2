@@ -11,9 +11,9 @@ app=Flask(__name__)
 def plot():
     start=datetime.datetime(2015,11,1)
     end=datetime.datetime(2016,3,10)
-
+    print "getting data"
     df=data.DataReader(name="GOOG",data_source="google",start=start,end=end)
-
+    print "data downloaded"
 
     def inc_dec(c, o):
         if c > o:
@@ -23,17 +23,17 @@ def plot():
         else:
             value="Equal"
         return value
-
+    print "modifiying df"
     df["Status"]=[inc_dec(c,o) for c, o in zip(df.Close,df.Open)]
     df["Middle"]=(df.Open+df.Close)/2
     df["Height"]=abs(df.Close-df.Open)
-
+    print "plotting"
     p=figure(x_axis_type='datetime', width=1000, height=300, responsive=True)
     p.title.text="Candlestick Chart"
     p.grid.grid_line_alpha=0.3
 
     hours_12=12*60*60*1000
-
+    print "segmenting"
     p.segment(df.index, df.High, df.index, df.Low, color="Black")
 
     p.rect(df.index[df.Status=="Increase"],df.Middle[df.Status=="Increase"],
@@ -45,6 +45,7 @@ def plot():
     script1, div1 = components(p)
     cdn_js=CDN.js_files[0]
     cdn_css=CDN.css_files[0]
+    print "rendering"
     return render_template("plot.html",
     script1=script1,
     div1=div1,
