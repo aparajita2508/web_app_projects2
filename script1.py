@@ -1,15 +1,14 @@
 from flask import Flask, render_template
+from pandas_datareader import data
+import datetime
+from bokeh.plotting import figure, show, output_file
+from bokeh.embed import components
+from bokeh.resources import CDN
 
 app=Flask(__name__)
 
 @app.route('/plot/')
 def plot():
-    from pandas_datareader import data
-    import datetime
-    from bokeh.plotting import figure, show, output_file
-    from bokeh.embed import components
-    from bokeh.resources import CDN
-
     start=datetime.datetime(2015,11,1)
     end=datetime.datetime(2016,3,10)
 
