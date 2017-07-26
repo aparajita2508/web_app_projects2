@@ -28,7 +28,7 @@ def plot():
     df["Middle"]=(df.Open+df.Close)/2
     df["Height"]=abs(df.Close-df.Open)
     print "plotting"
-    p=figure(x_axis_type='datetime', width=1000, height=300, responsive=True)
+    p=figure(x_axis_type="datetime", width=1000, height=300, responsive=True)
     p.title.text="Candlestick Chart"
     p.grid.grid_line_alpha=0.3
 
