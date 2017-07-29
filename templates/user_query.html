@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Finance report query for stock</title>
+</head>
+<body>
+
+
+    <form action = "{{ url_for('plot_stock_bokeh') }}" method = "POST">
+        <table>
+            <tr>Stock Name <input type = "text" name = "StockName" size="10"/></tr>
+            <tr>Start Date <input type = "date" value="yyyy-mm-dd" data-date-inline-picker="true" name = "StartDate" size="10"/></tr>
+            <tr>End Date   <input type = "date" value="yyyy-mm-dd" data-date-inline-picker="true" name = "EndDate" size="10"/></tr>
+        </table>
+        <p><input type = "submit" value = "submit" /></p>
+
+      </form>
+
+
+   </body>
+</html>
