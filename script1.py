@@ -6,8 +6,7 @@ from bokeh.embed import components
 from bokeh.resources import CDN
 
 app=Flask(__name__)
-
-@app.route('/plot/')
+@app.route('/')
 def plot():
     return render_template("user_query.html")
 
@@ -68,7 +67,7 @@ def plot_stock_bokeh():
     cdn_js=cdn_js, stock_name_for_label =  stock_for_plot )
 
 
-@app.route('/')
+@app.route('/home/')
 def home():
     return render_template("home.html")
 
